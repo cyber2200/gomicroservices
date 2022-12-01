@@ -13,3 +13,7 @@ func ApiLogin(c *gin.Context) {
 func ApiAuth(c *gin.Context) {
 	models.Auth(c)
 }
+
+func ApiLogout(c *gin.Context) {
+	models.Logout(c)
+}

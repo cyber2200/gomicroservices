@@ -11,3 +11,7 @@ func ApiLogin(c *gin.Context) {
 func ApiAuth(c *gin.Context) {
 	Request(c, "/api/auth")
 }
+
+func ApiLogout(c *gin.Context) {
+	Request(c, "/api/logout")
+}

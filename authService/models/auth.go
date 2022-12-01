@@ -76,3 +76,16 @@ func Auth(c *gin.Context) {
 		"res": "OK",
 	})
 }
+
+func Logout(c *gin.Context) {
+	db := getDbCon()
+	var logoutRequest types.LogoutRequest
+	c.BindJSON(&logoutRequest)
+	_, err := db.Exec("DELETE FROM `users_sessions` WHERE `session_id` = ?;", logoutRequest.SessionId)
+	if err != nil {
+		fmt.Println(err)
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"res": "OK",
+	})
+}

@@ -20,3 +20,7 @@ type UsersEntity struct {
 type AuthRequest struct {
 	SessionId string `json:"session_id"`
 }
+
+type LogoutRequest struct {
+	SessionId string `json:"session_id"`
+}
