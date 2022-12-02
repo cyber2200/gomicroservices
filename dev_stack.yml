@@ -35,6 +35,21 @@ services:
       - ./fe01:/app
       - v1:/app/node_modules
     command: "npm run start"
+  mysql01:
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3307:3306
+    expose:
+      - "3307"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123qwe
+      MYSQL_DATABASE: mysql01
+      MYSQL_USER: mysql01
+      MYSQL_PASSWORD: 123qwe
 volumes:
   v1:
     external: true

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const BASE_URL = "http://localhost:3002"
+const BASE_URL = "http://auth_service:3002"
 
 func Request(c *gin.Context, reqPath string) {
 	body, err := ioutil.ReadAll(c.Request.Body)

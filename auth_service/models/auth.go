@@ -72,6 +72,32 @@ func Auth(c *gin.Context) {
 		return
 	}
 
+	db := getDbCon()
+	dbRes, err := db.Query("SELECT * FROM `users_sessions` WHERE `session_id` = ?;", authRequest.SessionId)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var usersSessionsEntites []types.UsersSessionsEntity
+	var usersSessionsEntity types.UsersSessionsEntity
+	for dbRes.Next() {
+		dbRes.Scan(
+			&usersSessionsEntity.Id,
+			&usersSessionsEntity.SessionId,
+			&usersSessionsEntity.UserId,
+		)
+		usersSessionsEntites = append(usersSessionsEntites, usersSessionsEntity)
+	}
+
+	if len(usersSessionsEntites) == 0 {
+		c.JSON(http.StatusOK, gin.H{
+			"res": "NOK",
+		})
+		return
+	}
+
+	fmt.Printf("\n%+v\n", usersSessionsEntity)
+
 	c.JSON(http.StatusOK, gin.H{
 		"res": "OK",
 	})

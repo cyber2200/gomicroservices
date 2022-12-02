@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose -f ./dev_stack.yml up --build
+docker-compose -f ./dev_stack.yml up
