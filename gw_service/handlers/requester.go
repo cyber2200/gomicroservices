@@ -15,11 +15,11 @@ const BASE_URL = "http://auth_service:3002"
 func Request(c *gin.Context, reqPath string) {
 	body, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	resp, err := http.Post(BASE_URL+reqPath, "application/json", bytes.NewBuffer(body))
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	var res map[string]interface{}
 	json.NewDecoder(resp.Body).Decode(&res)
