@@ -43,7 +43,7 @@ services:
     command: "npm run start"
   mysql01:
     platform: linux/x86_64
-    image: mysql:5.7
+    image: mysql:8.0.31
     volumes:
       - "./.mysql-data/db:/var/lib/mysql"
     restart: always
