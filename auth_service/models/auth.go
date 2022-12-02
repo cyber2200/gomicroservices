@@ -96,8 +96,6 @@ func Auth(c *gin.Context) {
 		return
 	}
 
-	fmt.Printf("\n%+v\n", usersSessionsEntity)
-
 	c.JSON(http.StatusOK, gin.H{
 		"res": "OK",
 	})
